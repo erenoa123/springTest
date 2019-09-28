@@ -21,7 +21,7 @@ public class HeloController {
         model.addAttribute("label",label);
         model.addAttribute("point",point);
 
-		return "mock/starter_test";
+		return "index";
 	}
 
 }
