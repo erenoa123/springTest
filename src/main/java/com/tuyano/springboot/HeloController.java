@@ -35,6 +35,7 @@ public class HeloController {
 		mav.addObject("label",label);
 		mav.addObject("point",point);
 
+
 		mav.setViewName("index");
 		mav.addObject("msg", "お名前を書いて送信してください");
 
