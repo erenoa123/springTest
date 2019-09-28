@@ -14,10 +14,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source䦩﫨:300,400,400i,700" rel="stylesheet">
-  
+
 
 </head>
 <body class="hold-transition sidebar-mini">
@@ -74,7 +74,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <i class="far fa-circle nav-icon"></i>
                   <p>トレーニング情報入力</p>
                 </a>
-                
+
               </li>
               <li class="nav-item">
                 <a href="starter_test.html" class="nav-link active">
@@ -177,9 +177,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- Bootstrap 4 -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
-<script src="dist/js/adminlte.min.js"></script>
+<script src="js/adminlte.min.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="dist/js/pages/dashboard.js"></script>
+<script src="js/pages/dashboard.js"></script>
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
@@ -247,9 +247,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
     }
 
     // This will get the first returned node in the jQuery collection.
-    var areaChart       = new Chart(areaChartCanvas, { 
+    var areaChart       = new Chart(areaChartCanvas, {
       type: 'line',
-      data: areaChartData, 
+      data: areaChartData,
       options: areaChartOptions
     })
 
@@ -263,9 +263,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
     lineChartData.datasets[1].fill = false;
     lineChartOptions.datasetFill = false
 
-    var lineChart = new Chart(lineChartCanvas, { 
+    var lineChart = new Chart(lineChartCanvas, {
       type: 'line',
-      data: lineChartData, 
+      data: lineChartData,
       options: lineChartOptions
     })
 
@@ -276,12 +276,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
     var donutChartCanvas = $('#donutChart').get(0).getContext('2d')
     var donutData        = {
       labels: [
-          'Chrome', 
+          'Chrome',
           'IE',
-          'FireFox', 
-          'Safari', 
-          'Opera', 
-          'Navigator', 
+          'FireFox',
+          'Safari',
+          'Opera',
+          'Navigator',
       ],
       datasets: [
         {
@@ -299,7 +299,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     var donutChart = new Chart(donutChartCanvas, {
       type: 'doughnut',
       data: donutData,
-      options: donutOptions      
+      options: donutOptions
     })
 
     //-------------
@@ -317,7 +317,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     var pieChart = new Chart(pieChartCanvas, {
       type: 'pie',
       data: pieData,
-      options: pieOptions      
+      options: pieOptions
     })
 
     //-------------
@@ -337,7 +337,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     }
 
     var barChart = new Chart(barChartCanvas, {
-      type: 'bar', 
+      type: 'bar',
       data: barChartData,
       options: barChartOptions
     })
@@ -362,7 +362,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     }
 
     var stackedBarChart = new Chart(stackedBarChartCanvas, {
-      type: 'bar', 
+      type: 'bar',
       data: stackedBarChartData,
       options: stackedBarChartOptions
     })
