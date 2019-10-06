@@ -3,9 +3,9 @@
 This is a starter template page. Use this page to start your new project from
 scratch. This page gets rid of all links and provides the needed markup only.
 -->
-<html lang="en" >
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
@@ -72,15 +72,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </a>
 
               </li>
-                            <li class="nav-item">
-                <a href="/regist/manage" class="nav-link">
+              <li class="nav-item">
+                <a href="/regist/manage" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>選手管理情報入力</p>
                 </a>
 
               </li>
               <li class="nav-item">
-                <a href="/regist/training" class="nav-link active">
+                <a href="/regist/training" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>トレーニング情報入力</p>
                 </a>
@@ -116,7 +116,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <div class="row mb-2">
           <div class="col-sm-6">
             <h1 class="m-0 text-dark">データ入力画面</h1>
-            <p th:if="${check}" th:text="${trueVal}"></p>
+           	<p th:if="${check}" th:text="${trueVal}"></p>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -136,47 +136,26 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form role="form" th:action="@{/controller/trainingsave}" th:object="${training}" method="post">
+              <form role="form"  th:action="@{/controller/managesave}" th:object="${manage}" method="POST">
                 <div class="card-body">
                   <div class="form-group">
                     <label for="exampleInputDate">日付</label>
                     <input type="date" class="form-control" id="exampleInputDate" placeholder="Enter Date" th:field="*{date}">
                   </div>
 
+                  <!-- select -->
+                  	<div class="form-group">
+                    	<label>選手名</label>
+	                    <select class="form-control" th:field="*{pid}">
+						 <option th:each="player : ${playerList}" th:value="${player.playerid}" th:inline="text" >[[${player.name}]]</option>
+	                    </select>
+	                  </div>
+
                   <div class="form-group">
                     <label for="exampleInputClass">クラス</label>
                     <input type="text" class="form-control" id="exampleInputClass" placeholder="Enter Class" th:field="*{class1}">
                   </div>
 
-                   <div class="col-sm-6">
-                      <!-- radio -->
-                      <div class="form-group">
-                      	<label for="exampleInputKoma">コマ</label>
-                        <div class="form-check">
-                          <input class="form-check-input" type="radio" name="radio1" value = "AM" th:field="*{koma}">
-                          <label class="form-check-label">AM</label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="radio" name="radio1" value = "PM" th:field="*{koma}">
-                          <label class="form-check-label">PM</label>
-                        </div>
-                      </div>
-                    </div>
-
-                  <div class="form-group">
-                    <label for="exampleInputMenu">メニュー</label>
-                    <input type="text" class="form-control" id="exampleInputMenu" placeholder="Enter Menu" th:field="*{menu}">
-                  </div>
-
-                  <div class="form-group">
-                    <label for="exampleInputStrength">強度</label>
-					<input id="range_5" type="text" name="range_5" value="" th:field="*{strength}">
-				 </div>
-
-                  <div class="form-group">
-                    <label for="exampleInputCount">本数</label>
-                    <input type="number" class="form-control" id="exampleInputCount" placeholder="Enter Count" th:field="*{count}">
-                  </div>
                 </div>
                 <!-- /.card-body -->
 

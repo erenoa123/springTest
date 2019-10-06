@@ -1,0 +1,6 @@
+spring:
+  datasource:
+    url:  jdbc:postgresql://ec2-174-129-27-158.compute-1.amazonaws.com:5432/d34v4b3kqab9n0
+    username: ejotbkuophwgug
+    password: b02df6439daa7bcdbf9a2fea299696f56249bd9b13600eb20cf944b07543ebd8
+    driverClassName: org.postgresql.Driver
