@@ -45,8 +45,32 @@ body{font-size:13pt;color:gray;margin:5px 25px;}
     });
     /*]]>*/
     </script>
+<canvas id="ChartDemo2"></canvas>
+    <script>
+    var ctx2 = document.getElementById("ChartDemo2").getContext('2d');
+    var request = new XMLHttpRequest();
 
+    request.open('GET', 'http://localhost:8080/controller/chart', true);
+    request.responseType = 'json';
 
+    request.onload = function () {
+      var data = this.response;
+      console.log(data);
+      var ChartDemo2 = new Chart(ctx2, {
+          type: 'line',
+          data: {
+              // コントローラーで格納したlabelを変数式で取り出すだけ。
+              labels: ["a","b","c","d"],
+              datasets: data
+          },
+          options: {
+              responsive: true,
+          }
+      });
+    };
+
+    request.send();
+  </script>
 
 </body>
 </html>

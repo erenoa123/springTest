@@ -79,14 +79,33 @@ public class HeloController {
 		result.setPlayerid(Integer.valueOf(manage.getPid()));
 		List<Manage> manageList = manageService.selectAll();
 
+		List<Player> playerList = playerService.selectAll();
+
+		for(Player playerall : playerList) {
+			if(Integer.valueOf(result.getPlayerid()) == playerall.getPlayerid()) {
+				result.setName(playerall.getName());
+			}
+		}
+
 		for(Manage manageall: manageList) {
 			if(result.getDate().equals(manageall.getDate()) && Integer.valueOf(result.getPlayerid()) == manageall.getPlayerid()) {
 				result.setClass1(manageall.getClass1());
-				}
+			}
+		}
+
+		if(result.getClass1() == null) {
+			mav.setViewName("starter_test_form_result1");
+			mav.addObject("manage",new ManageBean());
+			mav.addObject("playerList", playerService.selectAll());
+			mav.addObject("check", true);
+			mav.addObject("trueVal", result.getDate()+"に"+result.getName()+"さんの管理情報が登録されていません");
+
+			return mav;
 		}
 
 		List<Training> trainingList = trainingService.selectAll();
 
+		result.setTrainingid(0);
 		for(Training trainingall : trainingList ) {
 			if(result.getDate().equals(trainingall.getDate()) && result.getClass1().equals(trainingall.getClass1())) {
 				result.setTrainingid(trainingall.getTrainingid());
@@ -97,12 +116,14 @@ public class HeloController {
 			}
 		}
 
-		List<Player> playerList = playerService.selectAll();
+		if(result.getTrainingid() == 0) {
+			mav.setViewName("starter_test_form_result1");
+			mav.addObject("manage",new ManageBean());
+			mav.addObject("playerList", playerService.selectAll());
+			mav.addObject("check", true);
+			mav.addObject("trueVal", result.getDate()+"に"+result.getClass1()+"のトレーニング情報が登録されていません");
 
-		for(Player playerall : playerList) {
-			if(Integer.valueOf(result.getPlayerid()) == playerall.getPlayerid()) {
-				result.setName(playerall.getName());
-			}
+			return mav;
 		}
 
 		mav.setViewName("starter_test_form_result2");
@@ -122,6 +143,7 @@ public class HeloController {
 		resultEnt.setPlayerid(Integer.valueOf(result.getPlayerid()));
 		resultEnt.setTrainingid(Integer.valueOf(result.getTrainingid()));
 		resultEnt.setRank(Integer.valueOf(result.getRank()));
+		resultEnt.setPoint(11-Integer.valueOf(result.getRank()));
 
 		resultService.save(resultEnt);
 		mav.setViewName("starter_test_form_result1");
@@ -182,15 +204,8 @@ public class HeloController {
 	@RequestMapping(value = "/", method=RequestMethod.GET)
 	public ModelAndView index2(ModelAndView mav) {
 
-		String label[] = {"a","b","c","d","e","f","g"};
-		int point[] = {5,3,7,1,8,3,4,};
 
-		mav.addObject("label",label);
-		mav.addObject("point",point);
-
-
-		mav.setViewName("index");
-		mav.addObject("msg", "お名前を書いて送信してください");
+		mav.setViewName("starter_test");
 
 		return mav;
 	}
@@ -198,14 +213,14 @@ public class HeloController {
 	@RequestMapping(value = "/", method=RequestMethod.POST)
 	public ModelAndView send(@RequestParam("text1")String str, ModelAndView mav) {
 
-		String label[] = {"a","b","c","d","e","f","g"};
-		int point[] = {5,3,7,1,8,3,4,};
-
-		mav.addObject("label",label);
-		mav.addObject("point",point);
-		mav.addObject("msg", "こんにちは"+str+"さん！");
-		mav.addObject("value", str);
-		mav.setViewName("index");
+//		String label[] = {"a","b","c","d","e","f","g"};
+//		int point[] = {5,3,7,1,8,3,4,};
+//
+//		mav.addObject("label",label);
+//		mav.addObject("point",point);
+//		mav.addObject("msg", "こんにちは"+str+"さん！");
+//		mav.addObject("value", str);
+		mav.setViewName("starter_test");
 
 
 		return mav;
